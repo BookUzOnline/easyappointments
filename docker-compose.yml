@@ -13,11 +13,13 @@ services:
     image: easyappointments
     build:
       context: .
+      args:
+        - WITH_XDEBUG=true
     volumes:
       - ./src:/var/www/html
     command: dev
     ports:
-      - ${APP_HOST}:80:80
+      - ${APP_HOST}:8080:80
     environment:
       - DB_HOST=database:3306
       - APP_URL=localhost
